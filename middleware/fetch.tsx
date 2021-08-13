@@ -1,4 +1,4 @@
-const api:string = 'http://127.0.0.1:3000/api/echo'
+const api:string = 'https://nextjs123234.herokuapp.com/api/echo'
 
 export default function mimicPost(state:any){
    return fetch(api,{
