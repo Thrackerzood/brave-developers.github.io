@@ -11,18 +11,26 @@ export interface IInput{
 }
 
 export default function Pay():JSX.Element {
+   const router:any = useRouter()
    const [state, setState]:any = useState({phone: '', sum: ''})
-   const [response, responseState] = useState({header: '', res: false, theme: false})
+   const [stateFetch = {dataR: {header: '', res: false, theme: false}}, fetchLoad] = useState({dataR: {header: '', res: '', theme: ''}})
    const changeHandlerR = (event:any) => {
       return setState({...state, [event.target.name]: event.target.value})
    }
+
    function post(state:IInput){
-      setTimeout(()=>{
-         responseState(mimicPost(state))
+      setTimeout(async()=>{
+         let response = await mimicPost(state)
+         fetchLoad({dataR: response})
       }, 750)
    }
-   useEffect(() => {console.log(response)}, [response])
-   const router:any = useRouter()
+   useEffect(() => {
+      if(stateFetch.dataR.res && stateFetch.dataR.theme){
+         setTimeout(async()=>{
+            router.push('/')
+         }, 2000)
+      }
+   }, [stateFetch])
    const { operators }:any = useContext(Context)
    return (<PayS>
       {operators.map((item:any, index:number)=>{
@@ -41,20 +49,20 @@ export default function Pay():JSX.Element {
       })}
    <section className="form">
       <div>
-         {response.header 
-         ? <h3 className={response.res === true 
-         ? 'true' : 'false'}>{response.header}</h3> 
+         {stateFetch.dataR?.header 
+         ? <h3 className={stateFetch.dataR?.res === true 
+         ? 'true' : 'false'}>{stateFetch.dataR?.header}</h3> 
          : <h3> </h3>}
 
          <div className="phone"><p>Номер телефона: 
-            {response.header 
-            ? <input className={response.theme === true 
+            {stateFetch.dataR?.header 
+            ? <input className={stateFetch.dataR?.theme === true 
                ? 'trueInp' 
                : 'falseInp'} placeholder="+7-999-999-99-99" type="text" onChange={changeHandlerR} name="phone"/> 
             : <input placeholder="+7-999-999-99-99" type="text" onChange={changeHandlerR} name="phone"/>}
             </p></div>
-         <div className="sum"><p>Сумма платежа: {response.header 
-         ? <input className={response.theme === true 
+         <div className="sum"><p>Сумма платежа: {stateFetch.dataR?.header 
+         ? <input className={stateFetch.dataR?.theme === true 
             ? 'trueInp' 
             : 'falseInp'} type="text" placeholder="от 1 до 1000" onChange={changeHandlerR} name="sum"/> 
          : <input type="text" placeholder="от 1 до 1000" onChange={changeHandlerR} name="sum"/>} ✔ руб.</p></div>
