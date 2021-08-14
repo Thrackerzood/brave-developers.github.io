@@ -1,6 +1,9 @@
-const api:string = 'https://nextjs123234.herokuapp.com/api/echo'
+import { IInput, IStateRes } from "../pages/pay/[id]"
 
-export default function mimicPost(state:any){
+const api:string = '/api/echo'
+
+export default function mimicPost(state:IInput)
+:Promise<IStateRes>{
    return fetch(api,{
       method: 'POST',
       headers:{

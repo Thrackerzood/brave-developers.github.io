@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 
-export const NavS = styled.nav
+export const NavS:StyledComponent<"nav", any, {}, never> = styled.nav
 `
 background: ${props => props.color};
 margin-top: calc(4rem + 20px);

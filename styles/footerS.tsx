@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
-export const FooterS = styled.nav
+export const FooterS:StyledComponent<"nav", any, {}, never> = styled.nav
 `
 margin-top: 2rem;
 background: #24292E;

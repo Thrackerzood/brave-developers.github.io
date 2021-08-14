@@ -1,15 +1,18 @@
-function getRandomInt(max:number) {
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+function getRandomInt(max:number):number {
    return Math.floor(Math.random() * max);
  }
 
-export default function echo(req:any, res:any){
+export default function echo(req:NextApiRequest, res:NextApiResponse):void{
    //-----------
-   if(+req.body.sum >= 1 && +req.body.sum <= 1000 
+   if(+req.body.sum.replace(/_/g, '') >= 1 && +req.body.sum.replace(/_/g, '') <= 1000 
    &&
    /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/
-   .test(req.body.phone))
+   .test(req.body.phone.match(/\d/g).join('')))
    //_---------
    {
+      
       let number:number = getRandomInt(2)
       if(number === 1){
          res.statusCode = 200

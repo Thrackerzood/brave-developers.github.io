@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 
-export const PayS = styled.main
+export const PayS:StyledComponent<"nav", any, {}, never> = styled.main
 `
 display: flex;
 align-items: center;

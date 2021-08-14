@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
-export const MainS = styled.main
+export const MainS:StyledComponent<"nav", any, {}, never> = styled.main
 `
 min-height: calc(100vh - 500px);
 margin-top: 2rem;

@@ -3,7 +3,8 @@ import { HomeT } from '../components/home'
 import React from 'react'
 
 
-const Home: NextPage = ():JSX.Element => {
+const Home: NextPage = ()
+:JSX.Element => {
   return (<>
             <HomeT/>
           </>)
