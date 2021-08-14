@@ -1,6 +1,5 @@
 function search(str:string, a:string, b:string){
-      const num1 = str.lastIndexOf(a)
-      const num2 = str.lastIndexOf(b)
-      return str === '' ? -1 : (num1 > num2 ? num2 : num1)
+   return str === '' ? -1 : Math.max(str.lastIndexOf(a), str.lastIndexOf(b))
 }
+
 console.log(search('return2This3','r','s'))
