@@ -5,8 +5,9 @@ function getRandomInt(max:number):number {
  }
 
 export default function echo(req:NextApiRequest, res:NextApiResponse):void{
+   const sum:string = req.body.sum.replace(/[_\s]/g, '')
    //-----------
-   if(+req.body.sum.replace(/_/g, '') >= 1 && +req.body.sum.replace(/_/g, '') <= 1000 
+   if(+sum >= 1 && +sum <= 1000 
    &&
    /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/
    .test(req.body.phone.match(/\d/g).join('')))
