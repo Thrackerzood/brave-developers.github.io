@@ -107,7 +107,7 @@ useEffect(():void => {
             ? 'trueInp' 
             : 'falseInp'} type="text" placeholder="до: 1000 руб" onChange={changeHandlerR} name="sum"/> 
          : <MaskedInput mask="9 9 9 9" type="text" placeholder="до: 1000 руб" onChange={changeHandlerR} name="sum"/>} ✔ руб.</p></div>
-         <button onClick={()=> post(state)}>Оплатить</button>
+         <button>Оплатить</button>
       </div>
       </form>
    </section>
